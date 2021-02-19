@@ -21,6 +21,10 @@ const makeNovailoveyouChat = () => {
       font-size: 16px;
     }
 
+    .novailoveyou-chat a{
+        cursor: pointer;
+    }
+
     .novailoveyou-chat__btn{
       padding: 0.4em 2em; 
       display: inline-block; 
