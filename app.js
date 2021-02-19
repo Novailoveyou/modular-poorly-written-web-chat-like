@@ -294,7 +294,6 @@ const makeNovailoveyouChat = () => {
 
   chatBody.innerHTML = /* html */ `
     <a 
-      href="#!"
       id="novailoveyou-chat__btn" 
       class="novailoveyou-chat__btn"
     >
@@ -302,9 +301,9 @@ const makeNovailoveyouChat = () => {
       <img class="nily-chat-desk-only" src="./novailoveyou-chat-imgs/cursor.svg" alt="Курсор" />
       <img class="nily-chat-mob-only" src="./novailoveyou-chat-imgs/finger.svg" alt="Палец" />
     </a>
-    <form id="novailoveyou-chat__modBody" class="novailoveyou-chat__modBody novailoveyou-hidden">
+    <form id="novailoveyou-chat__modBody" class="novailoveyou-chat__modBody novailoveyou-hidden" onsubmit="ym(42094189,'reachGoal','Chtat')">
     
-      <a href="#!" id="js-nliy-chat-close-btn" class="modBody__close">
+      <a id="js-nliy-chat-close-btn" class="modBody__close">
         <img id="modBody__close" src="./novailoveyou-chat-imgs/cross.svg" alt="Закрыть"/>
       </a>
     
@@ -316,32 +315,32 @@ const makeNovailoveyouChat = () => {
           <p class="where-to-answer__title">Куда ответить:</p>
           <ul class="where-to-answer__contact-ways">
             <li class="contact-ways__contact-way contact-way--telegram">
-              <a href="#!" class="contact-way__contact-way-btn contact-way-btn-telegram">
+              <a class="contact-way__contact-way-btn contact-way-btn-telegram">
                 <img src="./novailoveyou-chat-imgs/telegram.svg" class="contact-way-btn__img" alt="Telegram"/>
               </a>
             </li>
             <li class="contact-ways__contact-way contact-way--whatsapp">
-              <a href="#!" class="contact-way__contact-way-btn contact-way-btn-whatsapp">
+              <a class="contact-way__contact-way-btn contact-way-btn-whatsapp">
                 <img src="./novailoveyou-chat-imgs/whatsapp.svg" class="contact-way-btn__img" alt="Whatsapp"/>
               </a>
             </li>
             <li class="contact-ways__contact-way contact-way--viber">
-              <a href="#!" class="contact-way__contact-way-btn contact-way-btn-viber">
+              <a class="contact-way__contact-way-btn contact-way-btn-viber">
                 <img src="./novailoveyou-chat-imgs/viber.svg" class="contact-way-btn__img" alt="Viber"/>
               </a>
             </li>
             <li class="contact-ways__contact-way contact-way--vk">
-              <a href="#!" class="contact-way__contact-way-btn contact-way-btn-vk">
+              <a class="contact-way__contact-way-btn contact-way-btn-vk">
                 <img src="./novailoveyou-chat-imgs/vk.svg" class="contact-way-btn__img" alt="VK"/>
               </a>
             </li>
             <li class="contact-ways__contact-way contact-way--phone">
-              <a href="#!" class="contact-way__contact-way-btn contact-way-btn-phone">
+              <a class="contact-way__contact-way-btn contact-way-btn-phone">
                 <img src="./novailoveyou-chat-imgs/phone.svg" class="contact-way-btn__img" alt="Телефон"/>
               </a>
             </li>
             <li class="contact-ways__contact-way contact-way--email">
-              <a href="#!" class="contact-way__contact-way-btn contact-way-btn-email">
+              <a class="contact-way__contact-way-btn contact-way-btn-email">
                 <img src="./novailoveyou-chat-imgs/email.svg" class="contact-way-btn__img" alt="Email"/>
               </a>
             </li>
@@ -352,7 +351,7 @@ const makeNovailoveyouChat = () => {
       <!-- Step 2 -->
       <div id="nily-chat-step-2" class="modBody__step modBody__step--two novailoveyou-hidden">
         <div class="step__top step--two__top">
-          <a id="top__arrow-back-step-two" href="#!" class="top__arrow-back">
+          <a id="top__arrow-back-step-two" class="top__arrow-back">
             <img src="./novailoveyou-chat-imgs/arrow-back.svg" alt="Назад"/>
           </a>
           <span id="nily-step-two-path" class="top__stepsPath"></span>
@@ -375,7 +374,7 @@ const makeNovailoveyouChat = () => {
       <!-- Step 3 -->
       <div id="nily-chat-step-3" class="modBody__step modBody__step--three novailoveyou-hidden">
         <div class="step__top step--two__top">
-          <a id="top__arrow-back-step-three" href="#!" class="top__arrow-back">
+          <a id="top__arrow-back-step-three" class="top__arrow-back">
             <img src="./novailoveyou-chat-imgs/arrow-back.svg" alt="Назад"/>
           </a>
           <span id="nily-step-three-path" class="top__stepsPath"></span>
