@@ -30,6 +30,10 @@ const makeNovailoveyouChat = () => {
       color: #fff;
     }
 
+    .novailoveyou-chat__btn:hover{
+      color: #fff;
+    }
+
     .novailoveyou-chat__modBody{
       position: relative;
       min-width: 23.4375em;
