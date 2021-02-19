@@ -379,7 +379,7 @@ const makeNovailoveyouChat = () => {
               <input 
                 type=${props.contactWay === 'email' ? 'email' : 'tel'} 
                 id="callOrPm-input" 
-                name=${props.contactWay === 'email' ? 'email' : 'number'} 
+                name=${props.contactWay === 'email' ? 'email' : 'phone'} 
                 placeholder=${props.contactWay === 'email' ? 'example@gmail.com' : '123-456-7890'} required>
             </div>
             <button id="novailoveyou-submit-btn" type="submit" value="Submit" class="novailoveyou-submit-btn">Отправить</button>
@@ -454,6 +454,8 @@ const makeNovailoveyouChat = () => {
         setTimeout(() => {
           callOrPmInput.style.backgroundColor = callOrPmInputBgc
         }, 2000)
+      } else {
+        showNilyChatStep(4)
       }
     })
   }
