@@ -301,7 +301,7 @@ const makeNovailoveyouChat = () => {
       <img class="nily-chat-desk-only" src="./novailoveyou-chat-imgs/cursor.svg" alt="Курсор" />
       <img class="nily-chat-mob-only" src="./novailoveyou-chat-imgs/finger.svg" alt="Палец" />
     </a>
-    <form id="novailoveyou-chat__modBody" class="novailoveyou-chat__modBody novailoveyou-hidden" onsubmit="ym(42094189,'reachGoal','Chtat')">
+    <form id="novailoveyou-chat__modBody" class="novailoveyou-chat__modBody novailoveyou-hidden">
     
       <a id="js-nliy-chat-close-btn" class="modBody__close">
         <img id="modBody__close" src="./novailoveyou-chat-imgs/cross.svg" alt="Закрыть"/>
@@ -456,7 +456,7 @@ const makeNovailoveyouChat = () => {
     const callOrPmInput = document.getElementById('callOrPm-input')
     const callOrPmInputBgc = callOrPmInput.style.backgroundColor
     document.getElementById('novailoveyou-submit-btn').addEventListener('click', () => {
-      if (callOrPmInput.value < 4) {
+      if (callOrPmInput.value < 1) {
         callOrPmInput.style.backgroundColor = 'rgba(221,86,86,0.4)'
         setTimeout(() => {
           callOrPmInput.style.backgroundColor = callOrPmInputBgc
