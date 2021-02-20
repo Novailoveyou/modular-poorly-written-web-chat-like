@@ -7,7 +7,7 @@ const makeNovailoveyouChat = () => {
   const props = {
     step: 0,
     contactWay: 'Telegram',
-    callOrPm: 'Позвонить',
+    callOrPm: 'Написать',
   }
 
   // Styles
@@ -395,6 +395,7 @@ const makeNovailoveyouChat = () => {
                     ? 'example@gmail.com'
                     : '123-456-7890'
                 } required>
+                <input type="hidden" id="wayOfContact-hidden-input" name="nilyChatWayOfContact"/>
             </div>
             <button id="novailoveyou-submit-btn" type="submit" value="Submit" class="novailoveyou-submit-btn">Отправить</button>
           </div>
@@ -491,6 +492,9 @@ const makeNovailoveyouChat = () => {
             callOrPmInput.style.backgroundColor = callOrPmInputBgc
           }, 2000)
         } else {
+          document.getElementById(
+            'wayOfContact-hidden-input'
+          ).value = document.getElementById('nily-step-three-path').innerHTML
           showNilyChatStep(4)
         }
       })
@@ -593,7 +597,12 @@ const makeNovailoveyouChat = () => {
       chatModBody.classList.remove('novailoveyou-hidden')
       nilyChatStepThree.classList.remove('novailoveyou-hidden')
 
-      if (props.contactWay === 'email' || props.contactWay === 'phone') {
+      if (
+        props.contactWay === 'email' ||
+        props.contactWay === 'phone' ||
+        props.contactWay === 'Whatsapp' ||
+        props.contactWay === 'VK'
+      ) {
         makeArrowBackWork(1)
       } else {
         makeArrowBackWork(2)
@@ -656,7 +665,7 @@ const makeNovailoveyouChat = () => {
     )
     if (showNillyChatStepEventExists === false) {
       contactWayBtns.forEach((btn, idx) => {
-        if (idx <= 3) {
+        if (idx === 0 || idx === 2) {
           btn.addEventListener('click', function showNilyChatStepTwo() {
             const validation = validateQuestion()
             if (validation === true) {
