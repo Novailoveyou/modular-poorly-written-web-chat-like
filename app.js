@@ -383,7 +383,7 @@ const makeNovailoveyouChat = () => {
         <div class="step--three__body step__body">
           <div class="body__inner">
             <div class="body__input-group--step-three">
-              <label for="callOrPm-input">Напишите свой ${
+              <label id="callOrPm-inputLabel" for="callOrPm-input">Напишите свой ${
                 props.contactWay === 'email' ? 'e-mail' : 'номер'
               }</label>
               <input 
@@ -594,6 +594,26 @@ const makeNovailoveyouChat = () => {
           : props.contactWay === 'phone'
           ? 'Позвонить'
           : props.contactWay + ' / ' + props.callOrPm
+
+      const callOrPmLabel = document.getElementById('callOrPm-inputLabel')
+      const callOrPmInput = document.getElementById('callOrPm-input')
+      if (props.contactWay === 'email') {
+        callOrPmLabel.innerHTML = 'Напишите ваш e-mail'
+        callOrPmInput.placeholder = 'example@email.com'
+        callOrPmInput.type = 'email'
+        callOrPmInput.name = 'email'
+      } else if (props.contactWay === 'VK') {
+        callOrPmLabel.innerHTML = 'Напишите ваш id'
+        callOrPmInput.placeholder = 'Ваш VK id'
+        callOrPmInput.type = 'text'
+        callOrPmInput.name = 'userVkPageId'
+      } else {
+        callOrPmLabel.innerHTML = 'Напишите ваш номер'
+        callOrPmInput.placeholder = '123 456 78 90'
+        callOrPmInput.type = 'tel'
+        callOrPmInput.name = 'phone'
+      }
+
       chatModBody.classList.remove('novailoveyou-hidden')
       nilyChatStepThree.classList.remove('novailoveyou-hidden')
 
