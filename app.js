@@ -603,6 +603,8 @@ const makeNovailoveyouChat = () => {
         callOrPmInput.type = 'email'
         callOrPmInput.name = 'email'
       } else if (props.contactWay === 'VK') {
+        document.getElementById('nily-step-three-path').innerHTML =
+          'VK / Написать'
         callOrPmLabel.innerHTML = 'Напишите ваш id'
         callOrPmInput.placeholder = 'Ваш VK id'
         callOrPmInput.type = 'text'
