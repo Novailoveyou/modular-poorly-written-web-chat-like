@@ -7,7 +7,7 @@ const makeNovailoveyouChat = () => {
   const props = {
     step: 0,
     contactWay: 'Telegram',
-    callOrPm: 'Позвонить'
+    callOrPm: 'Позвонить',
   }
 
   // Styles
@@ -65,11 +65,12 @@ const makeNovailoveyouChat = () => {
     }
 
     .step--one__textarea{
-      height: 3.125em;
+      min-height: 3.125em;
       padding: 0.5em 0.9375em;
       border-radius: .3125em;
       margin-bottom: 1.125em;
       font-family: 'Roboto', sans-serif;
+      resize: none;
     }
     .step--one__textarea::placeholder{
       font-family: 'Roboto', sans-serif;
@@ -382,12 +383,18 @@ const makeNovailoveyouChat = () => {
         <div class="step--three__body step__body">
           <div class="body__inner">
             <div class="body__input-group--step-three">
-              <label for="callOrPm-input">Напишите свой ${props.contactWay === 'email' ? 'e-mail' : 'номер'}</label>
+              <label for="callOrPm-input">Напишите свой ${
+                props.contactWay === 'email' ? 'e-mail' : 'номер'
+              }</label>
               <input 
                 type=${props.contactWay === 'email' ? 'email' : 'tel'} 
                 id="callOrPm-input" 
                 name=${props.contactWay === 'email' ? 'email' : 'phone'} 
-                placeholder=${props.contactWay === 'email' ? 'example@gmail.com' : '123-456-7890'} required>
+                placeholder=${
+                  props.contactWay === 'email'
+                    ? 'example@gmail.com'
+                    : '123-456-7890'
+                } required>
             </div>
             <button id="novailoveyou-submit-btn" type="submit" value="Submit" class="novailoveyou-submit-btn">Отправить</button>
           </div>
@@ -417,6 +424,15 @@ const makeNovailoveyouChat = () => {
   // Append html
   body.appendChild(chatBody)
 
+  const adjustTextareaHeight = (el) => {
+    el.style.height = '3.125em'
+    el.style.height = el.scrollHeight - 13 + 'px'
+  }
+  const stepOneTextare = document.getElementById('step--one__textarea')
+  stepOneTextare.addEventListener('keyup', () => {
+    adjustTextareaHeight(stepOneTextare)
+  })
+
   const showStepTwo = (idx) => {
     if (idx === 0) {
       document.getElementById('callOrPm-call').checked = true
@@ -433,38 +449,51 @@ const makeNovailoveyouChat = () => {
 
   const makeArrowBackWork = (prevStep) => {
     const arrowBackStepTwo = document.getElementById('top__arrow-back-step-two')
-    const arrowBackStepThree = document.getElementById('top__arrow-back-step-three')
+    const arrowBackStepThree = document.getElementById(
+      'top__arrow-back-step-three'
+    )
 
-    arrowBackStepTwo.addEventListener('click', function arrowBackStepTwoListener() {
-      showNilyChatStep(1)
-      arrowBackStepTwo.removeEventListener('click', arrowBackStepTwoListener)
-    })
-
-    arrowBackStepThree.addEventListener('click', function arrowBackStepThreeListener() {
-      if (prevStep === 1) {
+    arrowBackStepTwo.addEventListener(
+      'click',
+      function arrowBackStepTwoListener() {
         showNilyChatStep(1)
+        arrowBackStepTwo.removeEventListener('click', arrowBackStepTwoListener)
       }
+    )
 
-      if (prevStep === 2) {
-        showNilyChatStep(2)
+    arrowBackStepThree.addEventListener(
+      'click',
+      function arrowBackStepThreeListener() {
+        if (prevStep === 1) {
+          showNilyChatStep(1)
+        }
+
+        if (prevStep === 2) {
+          showNilyChatStep(2)
+        }
+        arrowBackStepThree.removeEventListener(
+          'click',
+          arrowBackStepThreeListener
+        )
       }
-      arrowBackStepThree.removeEventListener('click', arrowBackStepThreeListener)
-    })
+    )
   }
 
   const validatePhoneOrEmail = () => {
     const callOrPmInput = document.getElementById('callOrPm-input')
     const callOrPmInputBgc = callOrPmInput.style.backgroundColor
-    document.getElementById('novailoveyou-submit-btn').addEventListener('click', () => {
-      if (callOrPmInput.value < 1) {
-        callOrPmInput.style.backgroundColor = 'rgba(221,86,86,0.4)'
-        setTimeout(() => {
-          callOrPmInput.style.backgroundColor = callOrPmInputBgc
-        }, 2000)
-      } else {
-        showNilyChatStep(4)
-      }
-    })
+    document
+      .getElementById('novailoveyou-submit-btn')
+      .addEventListener('click', () => {
+        if (callOrPmInput.value < 1) {
+          callOrPmInput.style.backgroundColor = 'rgba(221,86,86,0.4)'
+          setTimeout(() => {
+            callOrPmInput.style.backgroundColor = callOrPmInputBgc
+          }, 2000)
+        } else {
+          showNilyChatStep(4)
+        }
+      })
   }
 
   validatePhoneOrEmail()
@@ -478,9 +507,18 @@ const makeNovailoveyouChat = () => {
     const nilyChatStepOne = document.getElementById('nily-chat-step-1')
     const nilyChatStepTwo = document.getElementById('nily-chat-step-2')
     const nilyChatStepThree = document.getElementById('nily-chat-step-3')
-    const nilyChatStepSuccess = document.getElementById('nily-chat-step-success')
+    const nilyChatStepSuccess = document.getElementById(
+      'nily-chat-step-success'
+    )
 
-    const stepsArr = [chatBtn, chatModBody, nilyChatStepOne, nilyChatStepTwo, nilyChatStepThree, nilyChatStepSuccess]
+    const stepsArr = [
+      chatBtn,
+      chatModBody,
+      nilyChatStepOne,
+      nilyChatStepTwo,
+      nilyChatStepThree,
+      nilyChatStepSuccess,
+    ]
 
     stepsArr.forEach((step) => {
       step.classList.add('novailoveyou-hidden')
@@ -512,7 +550,6 @@ const makeNovailoveyouChat = () => {
       props.callOrPm = 'Написать'
     }
 
-
     if (part === 0) {
       props.step = 0
       chatBtn.classList.remove('novailoveyou-hidden')
@@ -532,21 +569,27 @@ const makeNovailoveyouChat = () => {
       nilyChatStepTwo.classList.remove('novailoveyou-hidden')
 
       if (jsNilyChatCallOrPmELset === false) {
-        Array.from(document.querySelectorAll('.js-nily-chat-callOrPm')).forEach((radio, idx) => {
-          radio.addEventListener('click', () => {
-            showStepTwo(idx)
-          })
-        })
+        Array.from(document.querySelectorAll('.js-nily-chat-callOrPm')).forEach(
+          (radio, idx) => {
+            radio.addEventListener('click', () => {
+              showStepTwo(idx)
+            })
+          }
+        )
         jsNilyChatCallOrPmELset = true
       }
       makeArrowBackWork()
-
     }
 
     if (part === 3) {
       props.step = 3
 
-      document.getElementById('nily-step-three-path').innerHTML = props.contactWay === 'email' ? 'Написать' : props.contactWay === 'phone' ? 'Позвонить' : props.contactWay + ' / ' + props.callOrPm
+      document.getElementById('nily-step-three-path').innerHTML =
+        props.contactWay === 'email'
+          ? 'Написать'
+          : props.contactWay === 'phone'
+          ? 'Позвонить'
+          : props.contactWay + ' / ' + props.callOrPm
       chatModBody.classList.remove('novailoveyou-hidden')
       nilyChatStepThree.classList.remove('novailoveyou-hidden')
 
@@ -555,7 +598,6 @@ const makeNovailoveyouChat = () => {
       } else {
         makeArrowBackWork(2)
       }
-
     }
 
     if (part === 4) {
@@ -592,7 +634,6 @@ const makeNovailoveyouChat = () => {
         userIsToldToFillUpQuestion = false
       }, 3000)
     }
-
   }
 
   const closeNilyChat = () => {
@@ -610,7 +651,9 @@ const makeNovailoveyouChat = () => {
     showNilyChatStep(1)
     chatBtn.removeEventListener('click', nilyChatIsOpened)
 
-    const contactWayBtns = Array.from(document.querySelectorAll('.contact-way__contact-way-btn'))
+    const contactWayBtns = Array.from(
+      document.querySelectorAll('.contact-way__contact-way-btn')
+    )
     if (showNillyChatStepEventExists === false) {
       contactWayBtns.forEach((btn, idx) => {
         if (idx <= 3) {
@@ -640,13 +683,11 @@ const makeNovailoveyouChat = () => {
     if (closeBtn) {
       closeBtn.addEventListener('click', closeNilyChat)
     }
-
   }
 
   if (chatBtn) {
     chatBtn.addEventListener('click', nilyChatIsOpened)
   }
-
 }
 
 makeNovailoveyouChat()
